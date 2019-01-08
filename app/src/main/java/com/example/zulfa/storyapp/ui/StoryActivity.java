@@ -16,6 +16,8 @@ import com.example.zulfa.storyapp.R;
 import com.example.zulfa.storyapp.model.Page;
 import com.example.zulfa.storyapp.model.Story;
 
+import java.util.Stack;
+
 public class StoryActivity extends AppCompatActivity {
     public static final String TAG = StoryActivity.class.getSimpleName();
     private String name;
@@ -24,6 +26,9 @@ public class StoryActivity extends AppCompatActivity {
     private TextView storyTextView;
     private Button choice1Button;
     private Button choice2Button;
+    private Stack<Integer> pagestack = new Stack<Integer>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +55,7 @@ public class StoryActivity extends AppCompatActivity {
 
     private void loadPage(int pageNumber) {
 
+        pagestack.push(pageNumber);
         final Page  page = story.getPage(pageNumber);
         Drawable image = ContextCompat.getDrawable(this,page.getImageId());
         storyImageView.setImageDrawable(image);
@@ -102,5 +108,18 @@ public class StoryActivity extends AppCompatActivity {
                 loadPage(nextPage);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        pagestack.pop();
+        if (pagestack.isEmpty()){
+
+            super.onBackPressed();
+        }
+        else{
+            loadPage(pagestack.pop());
+        }
+
     }
 }

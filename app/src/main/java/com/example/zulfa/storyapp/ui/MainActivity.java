@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void startStory(String name) {
         Intent intent = new Intent(this,StoryActivity.class);
         Resources resources = getResources();
