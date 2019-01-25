@@ -28,7 +28,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startext.setText("");
+    }
 
     private void startStory(String name) {
         Intent intent = new Intent(this,StoryActivity.class);

@@ -73,7 +73,8 @@ public class StoryActivity extends AppCompatActivity {
             choice2Button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    finish();
+                    //finish();
+                    loadPage(0);
                 }
             });
         }
@@ -104,7 +105,7 @@ public class StoryActivity extends AppCompatActivity {
         choice2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int nextPage = page.getChoice2().getTextId();
+                int nextPage = page.getChoice2().getNextPage();
                 loadPage(nextPage);
             }
         });
